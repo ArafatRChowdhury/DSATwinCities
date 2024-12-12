@@ -1,0 +1,62 @@
+<--Set the document to php for the final product -->
+<!DOCTYPE html>
+<head>
+    <title>Twin Cities</title>
+</head>
+ <header class="grid-container"><h2><u>Twined Cities:</u> Liverpool and Rio de Janeiro</h2></header>
+ <style>
+    header{
+        font-size:large;
+        color:white;
+        background-color:black;
+        grid-template-areas: ph;   
+        text-align:center; 
+        width:100%;
+        border-radius:10px;
+    }
+    .grid-container { display: grid; grid-template-areas:
+        'ph ph ph ph ph'
+        'ln cn cn cn cn'
+        'ln cn cn cn cn'
+    }
+    .map-api{
+        text-align:right;
+        margin-right:50px;
+    }
+   /* body{
+     background-color:antiquewhite;
+    }*/
+    .city{
+        margin-left:100px;
+    }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: black;
+        color: white;
+        text-align:left;
+        padding-left:100px;
+      }
+    
+ </style>
+<body>
+    <div class="city">
+    <h3>Liverpool</h3>
+    <p>Information about Liverpool</p>
+    </div>
+    <div class="city">
+      <h3>Rio de Janeiro</h3>
+      <p>Information about Rio de Janeiro</p>  
+    </div>
+    <div class="map-api">
+     <p>[Map here]Mapping api to show information about each city</p>
+    </div>
+    <div class="footer">
+        <p>Add any links related to the content here</p>
+    </div>
+</body>
+
+
+</html>
