@@ -2,24 +2,18 @@
  header{
         font-size:large;
         color:white;
-        background-color:black;
-        grid-template-areas: ph;   
-        text-align:center; 
-        width:96%;
-       /* border-radius:10px;*/
-    }
-    .grid-container { display: grid; grid-template-areas:
-        'ph ph ph ph ph'
-        'ln cn cn cn cn'
-        'ln cn cn cn cn'
+        background-color:black;  
+        width:99%;
+        border-radius:10px;
+        padding:20px;
     }
     .map-api{
         text-align:right;
         margin-right:50px;
     }
-   /* body{
+    body{
      background-color:antiquewhite;
-    }*/
+    }
     .city{
         margin-left:100px;
         margin-top:60px;
@@ -36,10 +30,10 @@
       }
       .navbar {
         overflow: hidden;
-        background-color: #333;
+        background-color:black;
         position: fixed;
         top: 0;
-        width: 95%;
+        width: 98%;
         margin-top:80px;
         }
     
@@ -47,7 +41,7 @@
         float: left;
         display: block;
         color: #f2f2f2;
-        text-align: center;
+        text-align:right;
         padding: 14px 40px;
         text-decoration: none;
         font-size: 17px;
