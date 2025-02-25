@@ -1,5 +1,6 @@
 
-CREATE DATABASE Twin_Cities_Assessment;
+CREATE DATABASE IF NOT EXISTS Twin_Cities_Assessment;
+USE Twin_Cities_Assessment;
 
 CREATE TABLE City (
 City_ID int PRIMARY KEY,
@@ -13,12 +14,12 @@ coordinates VARCHAR(30)
 );
 
 INSERT INTO City (City_ID, Name, Country,Population,Time,Weather,Currency,coordinates)
-VALUES(1,'Liverpool','United Kingdom',922871,'2024-12-10', 'Sunny', 'Pounds(£)', 'N-22324242 E-27327832');
+VALUES(1,'Liverpool','United Kingdom',922871,'2024-12-10 00:00:00', 'Sunny', 'Pounds(£)', 'N-22324242 E-27327832');
 
 SELECT * FROM City;
 
 CREATE TABLE Place_of_Interest (
-Place_of_IterestID int PRIMARY KEY,
+Place_of_InterestID int PRIMARY KEY,
 Photo LONGBLOB,
 StreetName VARCHAR(45),
 Postcode VARCHAR(10),
@@ -43,7 +44,7 @@ Photo LONGBLOB,
 Body VARCHAR(65535)
 );
 INSERT INTO News (NewsID, Headline, Publisher, Time, Photo, Body)
-VALUES(1, 'News', 'Arthur 123', '2024-12-11',NULL,'ABC');
+VALUES(1, 'News', 'Arthur 123', '2024-12-11 00:00:00',NULL,'ABC');
 
 SELECT * FROM News;
 
@@ -55,6 +56,6 @@ Description VARCHAR(200),
 Time DATETIME
 );
 INSERT INTO Photos (PhotoID, Photo, PhotoName,Description, Time)
-VALUES (1, NULL, 'Tree', 'Many trees', '24-12-11');
+VALUES (1, NULL, 'Tree', 'Many trees', '2024-12-11 00:00:00');
 
 SELECT * FROM Photos;
