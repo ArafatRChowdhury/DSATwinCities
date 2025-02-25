@@ -30,7 +30,7 @@ Place_Description VARCHAR(150),
 Category VARCHAR(50)
 );
 
-INSERT INTO Place_of_Interest(Place_of_IterestID, Photo, StreetName, Postcode, NameofLocation, Coordinates, Place_Description, Category)
+INSERT INTO Place_of_Interest(Place_of_InterestID, Photo, StreetName, Postcode, NameofLocation, Lon, Lat, Place_Description, Category)
 VALUES(1,NULL,'Scenic avenue','LV1 AB2','ABC', 'N-2929302', 'W-29392942', 'ABC','History');
 
 SELECT * FROM Place_of_Interest;
