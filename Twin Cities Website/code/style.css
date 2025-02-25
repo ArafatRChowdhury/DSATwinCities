@@ -1,12 +1,74 @@
-@import "node_modules/ol/ol.css";
 
-html, body {
-  margin: 0;
-  height: 100%;
+ header{
+    font-size:large;
+    color:white;
+    background-color:black;  
+    width:99%;
+    border-radius:10px;
+    padding:20px;
+    grid-area: ph;
 }
-#map {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+
+.grid-container {display: grid; grid-template-areas:
+    'ph ph ph ph ph'
+    'ln ln ln ln ln'
+    'cn cn cn cn cn'
+    'en en en en en'
+    'rn rn rn rn rn'
+    'fn fn fn fn fn'
+}
+
+.liverpoolMap{
+    text-align:right;
+    margin-right:50px;
+    grid-area: en;
+}
+
+.rioDeJaneiroMap{
+    text-align:right;
+    margin-right:100px;
+    grid-area: rn;
+}
+
+body{
+    background-color:antiquewhite;
+}
+.city{
+    margin-left:100px;
+    margin-top:60px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align:left;
+    padding-left:100px;
+    grid-area: fn;
+}
+.navbar {
+    overflow: hidden;
+    background-color:black;
+    position: fixed;
+    top: 0;
+    width: 98%;
+    margin-top:80px;
+    grid-area: ln;
+}
+    
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align:right;
+    padding: 14px 40px;
+    text-decoration: none;
+    font-size: 17px;
+}
+    
+.navbar a:hover {
+    background: #ddd;
+    color: black;
 }

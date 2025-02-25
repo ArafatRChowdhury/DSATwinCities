@@ -1,0 +1,152 @@
+<!--Set the document to php for the final product -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Twin Cities</title>
+        <link rel="stylesheet" href="style.css">
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+        <!-- Maplibre GL-->
+        <link href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css" rel="stylesheet" />
+        <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+
+        <!-- Maplibre GL Leaflet -->
+        <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
+    </head>
+    <body>
+    <div class="grid-container">
+        <header class="grid-container">
+          <h2><u>Twined Cities:</u> Liverpool and Rio de Janeiro</h2>
+        </header>
+        <div class="city">
+        <h3>Liverpool</h3>
+        <p>Information about Liverpool</p>
+        </div>
+        <div class="city">
+          <h3>Rio de Janeiro</h3>
+          <p>Information about Rio de Janeiro</p>  
+        </div>
+        <div id="LiverpoolMap" class="liverpoolMap" style="width: 100%; height: 500px;">
+        </div>
+        <script>
+            const LiverpoolMap = L.map('LiverpoolMap', {dragging: false, zoomControl: false}).setView([53.40050, -2.99], 10);
+            //const liverpoolMountain = L.latLng(53.401065, -2.994611);
+
+
+            var markerTemplate = L.Icon.extend({
+                options: {
+                    iconSize: [25, 25],
+                    iconAnchor: [11, 47],
+                    popupAnchor: [-1, -38],
+                }
+            });
+
+            var defaultMarker = new markerTemplate({iconUrl: "icons/marker.png"});
+
+            L.maplibreGL({
+              style: 'https://tiles.openfreemap.org/styles/liberty',
+              minZoom: 15,
+              maxZoom: 15,
+            }).addTo(LiverpoolMap)
+
+            var liverpoolMarkers = [
+                {lat: 53.23699, lng: -3.04574, name: "Wheel of Liverpool"},
+                {lat: 53.41572, lng: -3.29094, name: "Liverpool Mountain"},
+                {lat: 53.36087, lng: -3.25074, name: "Pride of Liverpool"},
+                {lat: 53.50072, lng: -3.26722, name: "De Wadden"},
+                {lat: 53.43543, lng: -3.18072, name: "Maritime Museum"},
+                {lat: 53.37807, lng: -2.74551, name: "Maldron Hotel"}
+            ];
+
+            liverpoolMarkers.forEach(marker => {
+                let liverpoolMarkersMap = L.marker([marker.lat, marker.lng], {draggable: false, icon: defaultMarker})
+                .addTo(LiverpoolMap)
+                .bindPopup(marker.name)
+
+                liverpoolMarkersMap.on("mouseover", function() {
+                    liverpoolMarkersMap.openPopup();
+                })
+
+                liverpoolMarkersMap.on("mouseout", function() {
+                    liverpoolMarkersMap.closePopup();
+                })
+            });
+
+            /*
+            This click function event was to make finding co ordinates easier
+            LiverpoolMap.on('click', function(e) { //to find co ordinates easier, will most likely be removed
+                var lat = e.latlng.lat;
+                var lng = e.latlng.lng;
+                console.log("Clicked at: " + lat + ", " + lng);
+                alert("Latitude: " + lat + "\nLongitude: " + lng);
+            });*/
+
+            LiverpoolMap.dragging.disable();
+            LiverpoolMap.scrollWheelZoom.disable();
+            LiverpoolMap.touchZoom.disable();
+            LiverpoolMap.doubleClickZoom.disable();
+            LiverpoolMap.boxZoom.disable();
+            LiverpoolMap.keyboard.disable();
+        </script>
+
+        <div id="rioDeJaneiroMap" class="rioDeJaneiroMap" style="width: 100%; height: 500px;"></div>
+        <script>
+            const rioDeJaneiroMap = L.map('rioDeJaneiroMap', {dragging: false, zoomControl: false}).setView([-22.955333, -43.176388], 14)
+          
+            L.maplibreGL({
+              style: 'https://tiles.openfreemap.org/styles/liberty',
+            }).addTo(rioDeJaneiroMap)
+
+            var rioDeJaneiroMarkers = [
+                {lat: -22.95350, lng: -43.21112, name: "Christ The Redeemer"},
+                {lat: -22.97200, lng: -43.18083, name: "Copacabana Beach"},
+                {lat: -22.96267, lng: -43.21215, name: "Parque Lage"},
+                {lat: -22.94948, lng: -43.18332, name: "Botafogo Praia Shopping Centre"},
+                {lat: -22.95650, lng: -43.17800, name: "Museu Botafogo FR"},
+                {lat: -22.95050, lng: -43.15415, name: "Sugarloaf Mountain"},
+            ]
+
+            rioDeJaneiroMarkers.forEach(marker => {
+                let rioDeJaneiroMarkersMap = L.marker([marker.lat, marker.lng], {draggable: false, icon: defaultMarker})
+                .addTo(rioDeJaneiroMap)
+                .bindPopup(marker.name)
+
+                rioDeJaneiroMarkersMap.on("mouseover", function() {
+                    rioDeJaneiroMarkersMap.openPopup();
+                })
+
+                rioDeJaneiroMarkersMap.on("mouseout", function() {
+                    rioDeJaneiroMarkersMap.closePopup();
+                })
+            });
+
+            /*
+            This click function event was to make finding co ordinates easier
+            rioDeJaneiroMap.on('click', function(e) {
+                var lat = e.latlng.lat;
+                var lng = e.latlng.lng;
+                console.log("Clicked at: " + lat + ", " + lng);
+                alert("Latitude: " + lat + "\nLongitude: " + lng);
+            });*/
+
+            rioDeJaneiroMap.dragging.disable();
+            rioDeJaneiroMap.scrollWheelZoom.disable();
+            rioDeJaneiroMap.touchZoom.disable();
+            rioDeJaneiroMap.doubleClickZoom.disable();
+            rioDeJaneiroMap.boxZoom.disable();
+            rioDeJaneiroMap.keyboard.disable();
+        </script>
+        <div class="footer">
+            <p>Add any links related to the content here</p>
+        </div>
+        <div class="navbar">
+            <a>Liverpool</a>
+            <a >Rio de Janeiro</a>
+        </div>
+    </div>
+      </body>
+    </html>
+    
