@@ -13,7 +13,7 @@ coordinates VARCHAR(30)
 );
 
 INSERT INTO City (City_ID, Name, Country,Population,Time,Weather,Currency,coordinates)
-VALUES(1,'Liverpool','United Kingdom',922871,2024-12-10, 'Sunny', 'Pounds(£)', 'N-22324242 E-27327832');
+VALUES(1,'Liverpool','United Kingdom',922871,'2024-12-10', 'Sunny', 'Pounds(£)', 'N-22324242 E-27327832');
 
 SELECT * FROM City;
 
@@ -23,13 +23,14 @@ Photo LONGBLOB,
 StreetName VARCHAR(45),
 Postcode VARCHAR(10),
 NameofLocation VARCHAR(100),
-Coordinates VARCHAR(30),
+Lon VARCHAR (30),
+Lat VARCHAR (30),
 Place_Description VARCHAR(150),
 Category VARCHAR(50)
 );
 
 INSERT INTO Place_of_Interest(Place_of_IterestID, Photo, StreetName, Postcode, NameofLocation, Coordinates, Place_Description, Category)
-VALUES(1,NULL,'Scenic avenue','LV1 AB2','ABC', 'N- 2929302 E-29392942', 'ABC','History');
+VALUES(1,NULL,'Scenic avenue','LV1 AB2','ABC', 'N-2929302', 'W-29392942', 'ABC','History');
 
 SELECT * FROM Place_of_Interest;
 
@@ -42,7 +43,7 @@ Photo LONGBLOB,
 Body VARCHAR(65535)
 );
 INSERT INTO News (NewsID, Headline, Publisher, Time, Photo, Body)
-VALUES(1, 'News', 'Arthur 123', 2024-12-11,NULL,'ABC');
+VALUES(1, 'News', 'Arthur 123', '2024-12-11',NULL,'ABC');
 
 SELECT * FROM News;
 
@@ -54,6 +55,6 @@ Description VARCHAR(200),
 Time DATETIME
 );
 INSERT INTO Photos (PhotoID, Photo, PhotoName,Description, Time)
-VALUES (1, NULL, 'Tree', 'Many trees', 24-12-11);
+VALUES (1, NULL, 'Tree', 'Many trees', '24-12-11');
 
 SELECT * FROM Photos;
