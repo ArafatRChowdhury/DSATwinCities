@@ -1,4 +1,6 @@
-<!--Set the document to php for the final product -->
+<?php
+include "config.php";
+?>
     <!DOCTYPE html>
     <html>
     <head>
@@ -35,7 +37,6 @@
             const LiverpoolMap = L.map('LiverpoolMap', {dragging: false, zoomControl: false}).setView([53.40050, -2.99], 10);
             //const liverpoolMountain = L.latLng(53.401065, -2.994611);
 
-
             var markerTemplate = L.Icon.extend({
                 options: {
                     iconSize: [25, 25],
@@ -52,6 +53,7 @@
               maxZoom: 15,
             }).addTo(LiverpoolMap)
 
+            //array containing liverpool's places of interest
             var liverpoolMarkers = [
                 {lat: 53.23699, lng: -3.04574, name: "Wheel of Liverpool"},
                 {lat: 53.41572, lng: -3.29094, name: "Liverpool Mountain"},
@@ -61,10 +63,24 @@
                 {lat: 53.37807, lng: -2.74551, name: "Maldron Hotel"}
             ];
 
+            var places = <?php echo json_encode($places); ?>
+
+            //loop through the array and add a marker for each place of interest
+            //add mouse hover functionality that shows the places' names
+            //later on, this functionality will instead pull data from the database
             liverpoolMarkers.forEach(marker => {
+                let name = marker.name;
+                let description = "Loading information";
+
+                places.liverpool.forEach(place => {
+                    if (place.Name == marker.name) {
+                        description = place.Description;
+                    };
+                });
+
                 let liverpoolMarkersMap = L.marker([marker.lat, marker.lng], {draggable: false, icon: defaultMarker})
                 .addTo(LiverpoolMap)
-                .bindPopup(marker.name)
+                .bindPopup(`${name}<br>${description}`);
 
                 liverpoolMarkersMap.on("mouseover", function() {
                     liverpoolMarkersMap.openPopup();
@@ -84,6 +100,8 @@
                 alert("Latitude: " + lat + "\nLongitude: " + lng);
             });*/
 
+            // disable map interactions so that users don't lose sight of the markers
+            //map interaction ruins the placement of the markers too
             LiverpoolMap.dragging.disable();
             LiverpoolMap.scrollWheelZoom.disable();
             LiverpoolMap.touchZoom.disable();
@@ -100,28 +118,44 @@
               style: 'https://tiles.openfreemap.org/styles/liberty',
             }).addTo(rioDeJaneiroMap)
 
+
+            // array of dictionaries that contains co ordinates for rio's places of interest
             var rioDeJaneiroMarkers = [
-                {lat: -22.95350, lng: -43.21112, name: "Christ The Redeemer"},
+                {lat: -22.95350, lng: -43.21112, name: "Christ the Redeemer"},
                 {lat: -22.97200, lng: -43.18083, name: "Copacabana Beach"},
                 {lat: -22.96267, lng: -43.21215, name: "Parque Lage"},
-                {lat: -22.94948, lng: -43.18332, name: "Botafogo Praia Shopping Centre"},
+                {lat: -22.94948, lng: -43.18332, name: "Botafogo Praia Shopping"},
                 {lat: -22.95650, lng: -43.17800, name: "Museu Botafogo FR"},
                 {lat: -22.95050, lng: -43.15415, name: "Sugarloaf Mountain"},
             ]
 
+            console.log(places.rio);
+            //loop through the array and create a new marker for each place
+            //add a popup that says the name when the mouse hovers over the marker 
+            //later, data from the database will be shown instead
             rioDeJaneiroMarkers.forEach(marker => {
-                let rioDeJaneiroMarkersMap = L.marker([marker.lat, marker.lng], {draggable: false, icon: defaultMarker})
-                .addTo(rioDeJaneiroMap)
-                .bindPopup(marker.name)
+                let name = marker.name;
+                let description = "Loading information";
 
-                rioDeJaneiroMarkersMap.on("mouseover", function() {
-                    rioDeJaneiroMarkersMap.openPopup();
+                places.rio.forEach(place => {
+                    if (place.Name == marker.name) {
+                        description = place.Description;
+                    };
+                });
+
+                let rioMarkersMap = L.marker([marker.lat, marker.lng], {draggable: false, icon: defaultMarker})
+                .addTo(rioDeJaneiroMap)
+                .bindPopup(`${name}<br>${description}`);
+
+                rioMarkersMap.on("mouseover", function() {
+                    rioMarkersMap.openPopup();
                 })
 
-                rioDeJaneiroMarkersMap.on("mouseout", function() {
-                    rioDeJaneiroMarkersMap.closePopup();
+                rioMarkersMap.on("mouseout", function() {
+                    rioMarkersMap.closePopup();
                 })
             });
+
 
             /*
             This click function event was to make finding co ordinates easier
@@ -132,6 +166,8 @@
                 alert("Latitude: " + lat + "\nLongitude: " + lng);
             });*/
 
+            // disable map interactions so that users don't lose sight of the markers
+            //map interaction ruins the placement of the markers too
             rioDeJaneiroMap.dragging.disable();
             rioDeJaneiroMap.scrollWheelZoom.disable();
             rioDeJaneiroMap.touchZoom.disable();
