@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botafogo Praia Shopping Centre</title>
+    <style>
+        /* Basic styling for layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+        .content {
+            padding: 20px;
+        }
+        .image {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Welcome to Botafogo Praia Shopping</h1>
+    </header>
+    
+    <!-- Main Content Section -->
+    <div class="content">
+        <h2>About the Shopping Centre</h2>
+        <p>Located in the heart of Botafogo, Rio de Janeiro, Botafogo Praia Shopping offers a variety of stores, restaurants, and entertainment options with an amazing view of Sugarloaf Mountain.</p>
+        
+        <!-- Image of the Shopping Centre -->
+        <img src="botafogo-shopping.jpg" alt="Botafogo Praia Shopping" class="image">
+        
+        <!-- Features Section -->
+        <h2>What You Can Find Here</h2>
+        <ul>
+            <li>Fashion & Retail Stores</li>
+            <li>Food Court with local and international cuisines</li>
+            <li>Movie Theater with latest releases</li>
+            <li>Stunning view of Sugarloaf Mountain</li>
+        </ul>
+        
+        <!-- Location Section -->
+        <h2>Visit Us</h2>
+        <p>Address: Praia de Botafogo, 400 - Botafogo, Rio de Janeiro - RJ, Brazil</p>
+    </div>
+</body>
+</html>
