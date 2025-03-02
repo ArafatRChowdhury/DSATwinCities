@@ -55,8 +55,10 @@ CREATE TABLE News (
     FOREIGN KEY (City_ID) REFERENCES City(City_ID) ON DELETE CASCADE
 );
 
-INSERT INTO News (Headline, Publisher, Photo, Body)
-VALUES ('News', 'Arthur 123', NULL, 'ABC');
+INSERT INTO News (Headline, Publisher, Photo, Body, City_ID)
+VALUES 
+('RioNewsTest', 'Arthur 123', NULL, 'ABC', 1),
+('LiverpoolNewsTest', 'Arthur 123', NULL, 'ABC', 2);
 
 SELECT * FROM News;
 
