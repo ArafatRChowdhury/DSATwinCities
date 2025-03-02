@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$museuSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Museu Botafogo FR'";
+$result = $conn->query($museuSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +38,8 @@ include "config.php";
 <body>
     <div class="container">
         <!-- Header Section -->
-        <h1>Museu Botafogo FR</h1>
-        <p>Located in Rio de Janeiro, the Museu Botafogo FR is dedicated to the history and achievements of Botafogo de Futebol e Regatas.</p>
+        <h1><?php echo $info['NameofLocation'] ?></h1>
+        <p><?php echo $info['Place_Description']?></p>
         
         <!-- History Section -->
         <h2>History</h2>
@@ -48,7 +56,7 @@ include "config.php";
         
         <!-- Visiting Information -->
         <h2>Visit Information</h2>
-        <p><strong>Location:</strong> General Severiano, Rio de Janeiro, Brazil</p>
+        <p><strong>Location:</strong> <?php echo $info['StreetName']; echo ', '; echo $info['Postcode'] ?></p>
         <p><strong>Opening Hours:</strong> Tuesday - Sunday, 10 AM - 5 PM</p>
         <p><strong>Tickets:</strong> Available at the entrance or online</p>
     </div>

@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$maldronSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Maldron Hotel'";
+$result = $conn->query($maldronSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +64,7 @@ include "config.php";
 
     <!-- Header section with hotel name -->
     <header>
-        <h1>Maldron Hotel Liverpool</h1>
+        <h1><?php echo $info['NameofLocation']?></h1>
     </header>
 
     <!-- Navigation menu with links -->
@@ -73,7 +81,7 @@ include "config.php";
         <!-- About the hotel -->
         <section id="about">
             <h2>About the Hotel</h2>
-            <p>The Maldron Hotel in Liverpool is a luxury hotel offering comfort, style, and excellent service in the heart of the city.</p>
+            <p><?php echo $info['Place_Description'] ?></p>
         </section>
 
         <!-- Room details -->
@@ -99,7 +107,8 @@ include "config.php";
             <h2>Contact Us</h2>
             <p>Email: info@maldronliverpool.com</p>
             <p>Phone: +44 151 123 4567</p>
-            <p>Address: 123 Liverpool Street, Liverpool, UK</p>
+            <p>Street Name: <?php echo $info['StreetName'] ?></p>
+            <p>Postcode: <?php echo $info['Postcode'] ?></p>
         </section>
 
     </div>

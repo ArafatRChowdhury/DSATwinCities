@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$wheelSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Wheel of Liverpool'";
+$result = $conn->query($wheelSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,10 +51,13 @@ include "config.php";
 </head>
 <body>
     <div class="container">
-        <h1>Wheel of Liverpool</h1>
+        <h1><?php echo $info['NameofLocation']?></h1>
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Liverpool_Wheel_at_Night.jpg" alt="Wheel of Liverpool">
-        <p>The Wheel of Liverpool is a Ferris wheel on the city's waterfront, offering breathtaking views of the skyline and River Mersey.</p>
-        <button onclick="window.location.href='https://en.wikipedia.org/wiki/Wheel_of_Liverpool'">Learn More</button>
+        <p><?php echo $info['Place_Description']?></p>
+        <h2>Location</h2>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
+        <button onclick="window.location.href="https://en.wikipedia.org/wiki/Wheel_of_Liverpool">Learn More</button>
     </div>
 </body>
 </html>

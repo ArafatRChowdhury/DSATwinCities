@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$praiaSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Botafogo Praia Shopping'";
+$result = $conn->query($praiaSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,8 +47,8 @@ include "config.php";
     
     <!-- Main Content Section -->
     <div class="content">
-        <h2>About the Shopping Centre</h2>
-        <p>Located in the heart of Botafogo, Rio de Janeiro, Botafogo Praia Shopping offers a variety of stores, restaurants, and entertainment options with an amazing view of Sugarloaf Mountain.</p>
+        <h2><?php echo $info['NameofLocation'] ?></h2>
+        <p><?php echo $info['Place_Description'] ?></p>
         
         <!-- Image of the Shopping Centre -->
         <img src="botafogo-shopping.jpg" alt="Botafogo Praia Shopping" class="image">
@@ -56,7 +64,8 @@ include "config.php";
         
         <!-- Location Section -->
         <h2>Visit Us</h2>
-        <p>Address: Praia de Botafogo, 400 - Botafogo, Rio de Janeiro - RJ, Brazil</p>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
     </div>
 </body>
 </html>

@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$parqueLageSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Botafogo Praia Shopping'";
+$result = $conn->query($parqueLageSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +47,13 @@ include "config.php";
 <body>
     <div class="container">
         <!-- Page Header -->
-        <h1>Parque Lage - A Hidden Gem in Rio de Janeiro</h1>
+        <h1><?php echo $info['NameofLocation']?> - A Hidden Gem in Rio de Janeiro</h1>
         
         <!-- Image of the park -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Parque_Lage.jpg" alt="Parque Lage in Rio de Janeiro">
         
         <!-- Description of the park -->
+        <p><?php echo $info['Place_Description']?></p>
         <p>Parque Lage is a beautiful public park located at the foot of Corcovado in Rio de Janeiro, Brazil. It is known for its lush gardens, historic mansion, and stunning views of Christ the Redeemer.</p>
         
         <p>The park is a popular spot for locals and tourists alike, offering a peaceful escape from the city's hustle and bustle. It also houses the Escola de Artes Visuais, an art school that hosts exhibitions and workshops.</p>
@@ -52,7 +61,7 @@ include "config.php";
         <!-- Visiting Information -->
         <h2>Visit Information</h2>
         <ul>
-            <li>Location: Rua Jardim Botânico, Rio de Janeiro</li>
+            <li>Location: <?php echo $info['StreetName']; echo ', '; echo $info['Postcode'] ?> Rio de Janeiro</li>
             <li>Opening Hours: Daily from 8 AM to 5 PM</li>
             <li>Entrance Fee: Free</li>
         </ul>

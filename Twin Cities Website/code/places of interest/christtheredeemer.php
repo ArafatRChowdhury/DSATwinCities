@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$christSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Christ the Redeemer'";
+$result = $conn->query($christSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +46,8 @@ include "config.php";
 <body>
     <!-- Header Section -->
     <header>
-        <h1>Christ the Redeemer</h1>
-        <p>Rio de Janeiro, Brazil</p>
+        <h1><?php echo $info['NameofLocation'] ?></h1>
+        <p><?php echo $info['Place_Description'] ?></p>
     </header>
 
     <!-- Main Content Container -->
@@ -58,6 +66,10 @@ include "config.php";
         <!-- Visiting Information -->
         <h2>Visiting Christ the Redeemer</h2>
         <p>Visitors can reach the statue by train, van, or hiking. The Corcovado Railway offers a scenic ride through the Tijuca Forest to the top of Corcovado Mountain, where the statue is located. The panoramic views of Rio de Janeiro from the summit are breathtaking.</p>
+
+        <h2>Location:</h2>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
     </div>
 </body>
 </html>

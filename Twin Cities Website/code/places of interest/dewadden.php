@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$dewaddenSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'De Wadden'";
+$result = $conn->query($dewaddenSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,8 +59,8 @@ include "config.php";
 
     <!-- Header Section -->
     <header>
-        <h1>De Wadden - Liverpool</h1>
-        <p>A historic Dutch-style pub in Liverpool</p>
+        <h1><?php echo $info['NameofLocation'] ?></h1>
+        <p><?php echo $info['Place_Description'] ?></p>
     </header>
 
     <!-- Main Content Section -->
@@ -61,7 +69,8 @@ include "config.php";
         <p>De Wadden is a well-known Dutch-style pub located in Liverpool. With its unique architecture and rich history, it has been a favorite spot for locals and visitors alike.</p>
 
         <h2>Location</h2>
-        <p>Address: <strong>De Wadden, Liverpool, UK</strong></p>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
 
         <h2>Gallery</h2>
         <!-- Placeholder image for the pub -->

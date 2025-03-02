@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$maritimeSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Maritime Museum'";
+$result = $conn->query($maritimeSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +61,7 @@ include "config.php";
 <body>
     <!-- Header section -->
     <header>
-        <h1>Maritime Museum Liverpool</h1>
+        <h1><?php echo $info['NameofLocation']?> Liverpool</h1>
     </header>
     
     <!-- Navigation menu -->
@@ -68,12 +76,15 @@ include "config.php";
     <div class="container">
         <section id="about">
             <h2>About the Museum</h2>
-            <p>The Maritime Museum in Liverpool showcases the city’s rich maritime heritage, including exhibits on the Titanic, merchant navy, and the Battle of the Atlantic.</p>
+            <p><?php echo $info['Place_Description']?></p>
         </section>
         
         <section id="contact">
             <h2>Contact Us</h2>
             <p>For more information, visit our official website or contact us at info@maritimemuseumliverpool.com.</p>
+            <h2>Location</h2>
+            <p>Street Name: <?php echo $info['StreetName'] ?></p>
+            <p>Postcode: <?php echo $info['Postcode'] ?></p>
         </section>
     </div>
     

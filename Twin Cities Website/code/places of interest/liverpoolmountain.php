@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$liverpoolMountainSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Liverpool Mountain'";
+$result = $conn->query($liverpoolMountainSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,8 +66,8 @@ include "config.php";
 
     <!-- Header Section -->
     <header>
-        <h1>Liverpool Mountain</h1>
-        <p>Explore the scenic beauty of Liverpool's mountains</p>
+        <h1><?php echo $info['NameofLocation'] ?></h1>
+        <p><?php echo $info['Place_Description']?></p>
     </header>
 
     <!-- Main Content Section -->
@@ -71,7 +79,11 @@ include "config.php";
         <!-- Description Section -->
         <div class="description">
             <h2>About Liverpool Mountain</h2>
-            <p>Liverpool is known for its stunning landscapes, including some beautiful hills and mountains in the surrounding area. These peaks offer amazing views of the city and its scenic countryside. Whether you're a nature lover, a photographer, or just looking to explore, Liverpool's mountains are a perfect destination.</p>
+            <p>It's not actually a mountain. It's the first UK public artwork of Swiss artist Ugo Rondinone. Part of his Magic Mountains series.</p>
+
+            <h2>Location</h2>
+            <p>Street Name: <?php echo $info['StreetName'] ?></p>
+            <p>Postcode: <?php echo $info['Postcode'] ?></p>
         </div>
     </main>
 

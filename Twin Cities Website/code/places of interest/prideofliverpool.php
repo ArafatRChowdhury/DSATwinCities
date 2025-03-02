@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$praiaSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Pride of Liverpool'";
+$result = $conn->query($praiaSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,10 +65,17 @@ include "config.php";
 
     <!-- Header Section -->
     <header>
-        The Pride of Liverpool
+        <h2><?php echo $info['NameofLocation']?></h2>
     </header>
 
     <!-- Main Content -->
     <main>
         <!-- Image of Liverpool -->
-        <img src="https://upload.wikimedia.org/wikipedia/
+        <img src="https://upload.wikimedia.org/wikipedia/"></img>
+
+        <p><?php echo $info['Place_Description']?></p>
+
+        <h2>Location</h2>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
+    </main>

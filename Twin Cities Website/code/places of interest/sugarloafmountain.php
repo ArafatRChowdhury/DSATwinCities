@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$sugarloafMountainSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Sugarloaf Mountain'";
+$result = $conn->query($sugarloafMountainSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,14 +41,18 @@ include "config.php";
     <!-- Main container for content -->
     <div class="container">
         <!-- Page title -->
-        <h1>Sugarloaf Mountain</h1>
+        <h1><?php echo $info['NameofLocation']?></h1>
         <!-- Image of Sugarloaf Mountain -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Sugarloaf_Mountain_in_Rio_de_Janeiro_4.jpg" alt="Sugarloaf Mountain">
         <!-- Description section -->
-        <p>Located in Rio de Janeiro, Brazil, Sugarloaf Mountain (Pão de Açúcar) is a peak rising 396 meters above the harbor. It is famous for its cable car and breathtaking panoramic views of the city.</p>
+        <p><?php echo $info['Place_Description']?></p>
         <!-- Cable car information -->
         <h2>Famous Cable Car</h2>
         <p>The Sugarloaf cable car, known as "Bondinho do Pão de Açúcar," connects the city to the summit via a two-stage journey, offering incredible views of Copacabana Beach, Christ the Redeemer, and the surrounding coastline.</p>
+        
+        <h2>Location</h2>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
     </div>
 </body>
 </html>

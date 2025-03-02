@@ -1,5 +1,13 @@
 <?php
-include "config.php";
+include "../config.php";
+
+$copacabanaSql = "SELECT StreetName, Postcode, NameofLocation, Place_Description FROM `place_of_interest` WHERE NameofLocation = 'Copacabana Beach'";
+$result = $conn->query($copacabanaSql);
+
+$info = [];
+if ($result->num_rows > 0) {
+    $info = $result->fetch_assoc();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +46,8 @@ include "config.php";
 <body>
     <!-- Header section -->
     <header>
-        <h1>Copacabana Beach</h1>
-        <p>Experience the beauty of Rio de Janeiro</p>
+        <h1><?php echo $info['NameofLocation'] ?></h1>
+        <p><?php echo $info['Place_Description']?></p>
     </header>
     
     <!-- Main content container -->
@@ -49,6 +57,10 @@ include "config.php";
         
         <!-- Image of Copacabana Beach -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Copacabana_Beach%2C_Rio_de_Janeiro.jpg" alt="Copacabana Beach in Rio de Janeiro">
-            </div>
+
+        <h2>Location:</h2>
+        <p>Street Name: <?php echo $info['StreetName'] ?></p>
+        <p>Postcode: <?php echo $info['Postcode'] ?></p>
+    </div>
 </body>
 </html>
