@@ -30,18 +30,18 @@ $janeiroforecast = simplexml_load_file($janeiroforecasturl);
 function displayCurrentWeather($weather, $city) {
     echo "<div style='border:5px solid #ddd; padding: 10px; margin: 10px;'>";
     echo "<h2>Current Weather in $city on " . date('D dS F Y : H:i:s') . "</h2>";
-    echo "<p>Condition: " . $weather->weather['value'] . "</p>";
-    echo "<p>Temperature: " . $weather->temperature['value'] . "°C</p>";
-    echo "<p>Wind: " . $weather->wind->speed['value'] . " m/s (" . $weather->wind->speed['name'] . ") from a " . $weather->wind->direction['name'] . " direction</p>";
-    echo "<p>Humidity: " . $weather->humidity['value'] . "%</p>";
-    echo "<p>Sunrise: " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";
-    echo "<p>Sunset: " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";
+    echo "<p><u>Condition:</u> " . ucfirst($weather->weather['value'] . "</p>");//ucfirst makes the first character of the sentence a capital letter
+    echo "<p><u>Temperature:</u> " . $weather->temperature['value'] . "°C</p>";
+    echo "<p><u>Wind:</u> " . $weather->wind->speed['value'] . " m/s (" . $weather->wind->speed['name'] . ") from a " . $weather->wind->direction['name'] . " direction</p>";
+    echo "<p><u>Humidity:</u> " . $weather->humidity['value'] . "%</p>";
+    echo "<p><u>Sunrise:</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";
+    echo "<p><u>Sunset:</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";
     echo "</div>";
 }
 
 // Function to get forecast data and display it 
 function displayForecast($forecast, $city) {
-    echo "<div style='border:1px solid #ddd; padding: 10px; margin: 10px;'>";
+    echo "<div style='border:5px solid #ddd; padding: 5px; margin: 10px;'>";
     echo "<h2>5-Day Forecast for $city</h2>";
  
     $currentDate = null;
@@ -49,23 +49,21 @@ function displayForecast($forecast, $city) {
     foreach ($forecast->forecast->time as $time) {
         $forecastTime = strtotime($time['from']);
         $date = date('Y-m-d', $forecastTime);
-        // Only display one forecast per day (e.g., the noon forecast)
         $hour = date('H', $forecastTime);
         if ($hour == "12") {
             if ($currentDate !== $date) {
                 $currentDate = $date;
 
                 echo "<h3>" . date('D, d M Y', $forecastTime) . "</h3>";
-                echo "<p>Condition: " . $time->symbol['name'] . "</p>";
-                echo "<p>Temperature: " . $time->temperature['value'] . "°C</p>";
+                echo "<p><u>Condition:</u> " . ucfirst($time->symbol['name'] . "</p>");
+                echo "<p><u>Temperature:</u> " . $time->temperature['value'] . "°C</p>";
                 
-                // Check if windSpeed and mps attribute exist
                 $windSpeed = isset($time->windSpeed['mps']) ? $time->windSpeed['mps'] : 'N/A';
                 $windSpeedName = isset($time->windSpeed['name']) ? $time->windSpeed['name'] : 'N/A';
                 $windDirectionName = isset($time->windDirection['name']) ? $time->windDirection['name'] : 'N/A';
 
-                echo "<p>Wind: $windSpeed m/s ($windSpeedName) from a $windDirectionName direction</p>";
-                echo "<p>Humidity: " . $time->humidity['value'] . "%</p>";
+                echo "<p><u>Wind:</u> $windSpeed m/s ($windSpeedName) from a $windDirectionName direction</p>";
+                echo "<p><u>Humidity:</u> " . $time->humidity['value'] . "%</p>";
                 echo "<br>";
             }
         }
@@ -73,16 +71,22 @@ function displayForecast($forecast, $city) {
     echo "</div>";
 }
 // Div are made to display the data for current and forecast weather for both cities
-echo "<div style='display: flex; flex-wrap: wrap;'>";
-echo "<div style='flex: 1; min-width: 300px;'>";
+echo "<div style='display: flex;'>";
+echo "<div>";
 displayCurrentWeather($liverpoolweather, $liverpool);
 displayForecast($liverpoolforecast, $liverpool);
 echo "</div>";
-echo "<div style='flex: 1; min-width: 300px;'>";
+echo "<div>";
 displayCurrentWeather($janeiroweather, $janeiro);
 displayForecast($janeiroforecast, $janeiro);
 echo "</div>";
 echo "</div>";
    ?>
+   <style>
+    p{
+       font-size:large;
+       font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+   </style>
  </body>
 </html>
