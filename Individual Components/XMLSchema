@@ -1,1 +1,109 @@
-
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="XMLRefactoring">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="City"><!--Start of the 'City' table-->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CityLiverpool">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="City_ID" type="xs:unsignedInt" /><!--xs:unsignedInt means that the integer is not negative-->
+                    <xs:element name="Name" type="xs:string"/> <!--xs:string means that the type allows text -->
+                    <xs:element name="Country" type="xs:string"/>
+                    <xs:element name="Population" type="xs:unsignedInt"/>
+                    <xs:element name="Weather" type="xs:string"/>
+                    <xs:element name="Currency" type="xs:string"/>
+                    <xs:element name="Lon" type="xs:decimal"/><!--xs:decimal means that the type allows only decimal numbers-->
+                    <xs:element name="Lat" type="xs:decimal"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="CityJaneiro">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="City_ID" type="xs:unsignedInt"/>
+                    <xs:element name="Name" type="xs:string"/>
+                    <xs:element name="Country" type="xs:string" />
+                    <xs:element name="Population" type="xs:unsignedInt"/>
+                    <xs:element name="Weather" type="xs:string"/>
+                    <xs:element name="Currency" type="xs:string"/>
+                    <xs:element name="Lon" type="xs:decimal"/>
+                    <xs:element name="Lat" type="xs:decimal"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element><!--End of 'City' table-->
+        <xs:element name="PlaceofInterest"><!--Start of 'Place_of_Interest' table-->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Places">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Place_of_InterestID" type="xs:unsignedInt"/>
+                    <xs:element name="StreetName" type="xs:string"/>
+                    <xs:element name="Postcode" type="xs:string"/>
+                    <xs:element name="NameofLocation" type="xs:string"/>
+                    <xs:element name="Lon" type="xs:decimal"/>
+                    <xs:element name="Lat" type="xs:decimal"/>
+                    <xs:element name="Place_Description" type="xs:string"/>
+                    <xs:element name="City_ID" type="xs:unsignedInt"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element> <!--End of 'Place_of_Interest' table-->
+        <xs:element name="NewsArticle"> <!--Start of 'News' table-->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="News">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="NewsID" type="xs:unsignedInt"/>
+                    <xs:element name="Headline" type="xs:string"/>
+                    <xs:element name="Publisher" type="xs:string"/>
+                    <xs:element name="Time" type="xs:string"/>
+                    <xs:element name="Photo" type="xs:string"/>
+                    <xs:element name="Body" type="xs:string"/>
+                    <xs:element name="City_ID" type="xs:unsignedInt"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element><!--End of 'News' table-->
+        <xs:element name="Photos"><!--Start of 'Photos' table-->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Photo">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="PhotoID" type="xs:unsignedInt"/>
+                    <xs:element name="Photo" type="xs:string"/>
+                    <xs:element name="PhotoName" type="xs:string"/>
+                    <xs:element name="PhotoDescription" type="xs:string"/>
+                    <xs:element name="Time" type="xs:string"/>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element><!--End of 'Photos' table-->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
