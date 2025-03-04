@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<XMLRefactoring xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
- <!--xsi:noNamespaceSchemaLocation="submission_schema.xsd" XML Schema goes iniside the root header, different file with a .xsd extension-->
+<XMLRefactoring xmlns:xs="http://www.w3.org/2001/XMLSchema" xs:noNamespaceSchemaLocation="XMLSchema.xsd">
  <City id="City">	
   <CityLiverpool id="Liverpool">
 		<City_ID>1</City_ID>
@@ -24,7 +23,7 @@
   </CityJaneiro>
  </City>
  <PlaceofInterest id="PlaceofInterest">
-  <PlaceofInterest1 id="Wheel_of_Liverpool">
+  <Places id="Wheel_of_Liverpool">
 		<Place_of_InterestID>1</Place_of_InterestID>
 		<StreetName>4 Keel Wharf</StreetName>
 		<Postcode>L3 4FN</Postcode>
@@ -33,8 +32,8 @@
 		<Lat>53.23699</Lat>
 		<Place_Description>Ferris Wheel in Liverpool</Place_Description>
 		<City_ID>1</City_ID>
-  </PlaceofInterest1>
-  <PlaceofInterest2 id="Liverpool_Mountain">
+  </Places>
+  <Places id="Liverpool_Mountain">
 		<Place_of_InterestID>2</Place_of_InterestID>
 		<StreetName>Royal Albert Dock</StreetName>
 		<Postcode>L3 4AQ</Postcode>
@@ -43,8 +42,8 @@
 		<Lat>53.41572</Lat>
 		<Place_Description>Not actually a mountain</Place_Description>
 		<City_ID>1</City_ID>
-  </PlaceofInterest2>
-  <PlaceofInterest3 id="Pride_of_Liverpool">
+  </Places>
+  <Places id="Pride_of_Liverpool">
 		<Place_of_InterestID>3</Place_of_InterestID>
 		<StreetName>Royal Albert Dock</StreetName>
 		<Postcode>L3 4AA</Postcode>
@@ -53,8 +52,8 @@
 		<Lat>53.36087</Lat>
 		<Place_Description>Souvenir shop</Place_Description>
 		<City_ID>1</City_ID>
-  </PlaceofInterest3>
-  <PlaceofInterest4 id="De_Wadden">
+  </Places>
+  <Places id="De_Wadden">
 		<Place_of_InterestID>4</Place_of_InterestID>
 		<StreetName>Royal Albert Dock</StreetName>
 		<Postcode>L3 1PZ</Postcode>
@@ -63,8 +62,8 @@
 		<Lat>53.50072</Lat>
 		<Place_Description>Ship that got scrapped in 2024</Place_Description>
 		<City_ID>1</City_ID>
-  </PlaceofInterest4>
-  <PlaceofInterest5 id="Maritime_Museum">
+  </Places>
+  <Places id="Maritime_Museum">
 		<Place_of_InterestID>5</Place_of_InterestID>
 		<StreetName>Royal Albert Dock</StreetName>
 		<Postcode>L3 4AQ</Postcode>
@@ -73,8 +72,8 @@
 		<Lat>53.43543</Lat>
 		<Place_Description>Museum in Liverpool</Place_Description>
 		<City_ID>1</City_ID>
-  </PlaceofInterest5>
-  <PlaceofInterest6 id="Maldron_Hotel">
+  </Places>
+  <Places id="Maldron_Hotel">
 		<Place_of_InterestID>6</Place_of_InterestID>
 		<StreetName>2 Park Ln</StreetName>
 		<Postcode>L1 8AW</Postcode>
@@ -83,8 +82,8 @@
 		<Lat>53.37807</Lat>
 		<Place_Description>4-star hotel</Place_Description>
 		<City_ID>1</City_ID>
-  </PlaceofInterest6>
-  <PlaceofInterest7 id="Christ_the_Redeemer">
+  </Places>
+  <Places id="Christ_the_Redeemer">
 		<Place_of_InterestID>7</Place_of_InterestID>
 		<StreetName>Cosme Velho</StreetName>
 		<Postcode>22241-125</Postcode>
@@ -93,8 +92,8 @@
 		<Lat>-22.9535</Lat>
 		<Place_Description>Wonder of the world</Place_Description>
 		<City_ID>2</City_ID>
-  </PlaceofInterest7>
-  <PlaceofInterest8 id="Copacabana_Beach">
+  </Places>
+  <Places id="Copacabana_Beach">
 		<Place_of_InterestID>8</Place_of_InterestID>
 		<StreetName>Avenida Atlantica</StreetName>
 		<Postcode>22070-011</Postcode>
@@ -103,8 +102,8 @@
 		<Lat>-22.972</Lat>
 		<Place_Description>Big beach</Place_Description>
 		<City_ID>2</City_ID>
-  </PlaceofInterest8>
-  <PlaceofInterest9 id="Parque_Lage">
+  </Places>
+  <Places id="Parque_Lage">
 		<Place_of_InterestID>9</Place_of_InterestID>
 		<StreetName>Rua Jardim Botanico</StreetName>
 		<Postcode>22461-000</Postcode>
@@ -113,8 +112,8 @@
 		<Lat>-22.96267</Lat>
 		<Place_Description>Public park and garden</Place_Description>
 		<City_ID>2</City_ID>
-  </PlaceofInterest9>
-  <PlaceofInterest10 id="Botafogo_Praia_Shopping">
+  </Places>
+  <Places id="Botafogo_Praia_Shopping">
 		<Place_of_InterestID>10</Place_of_InterestID>
 		<StreetName>Praia de Botafogo</StreetName>
 		<Postcode>22250-040</Postcode>
@@ -123,8 +122,8 @@
 		<Lat>-22.94948</Lat>
 		<Place_Description>Shopping Centre</Place_Description>
 		<City_ID>2</City_ID>
-  </PlaceofInterest10>
-  <PlaceofInterest11 id="Museu_Botafogo_FR">
+  </Places>
+  <Places id="Museu_Botafogo_FR">
 		<Place_of_InterestID>11</Place_of_InterestID>
 		<StreetName>Rua General Severiano</StreetName>
 		<Postcode>22290-040</Postcode>
@@ -133,8 +132,8 @@
 		<Lat>-22.9565</Lat>
 		<Place_Description>Museum in Rio de Janeiro</Place_Description>
 		<City_ID>2</City_ID>
-  </PlaceofInterest11>
-  <PlaceofInterest12>
+  </Places>
+  <Places>
 		<Place_of_InterestID>12</Place_of_InterestID>
 		<StreetName>Avenida Pasteur</StreetName>
 		<Postcode>22290-040</Postcode>
@@ -143,10 +142,10 @@
 		<Lat>-22.9505</Lat>
 		<Place_Description>AKA Pao de Acucar</Place_Description>
 		<City_ID>2</City_ID>
-  </PlaceofInterest12>
+  </Places>
  </PlaceofInterest>
- <News id="News">
-  <News1 id="RioNewsTest">
+ <NewsArticle id="News">
+  <News id="RioNewsTest">
 		<NewsID>1</NewsID>
 		<Headline>RioNewsTest</Headline>
 		<Publisher>Arthur 123</Publisher>
@@ -154,8 +153,8 @@
 		<Photo>null</Photo>
 		<Body>ABC</Body>
 		<City_ID>1</City_ID>
-  </News1>
-  <News2 id="LiverpoolNewsTest">
+  </News>
+  <News id="LiverpoolNewsTest">
 		<NewsID>2</NewsID>
 		<Headline>LiverpoolNewsTest</Headline>
 		<Publisher>Arthur 123</Publisher>
@@ -163,15 +162,15 @@
 		<Photo>null</Photo>
 		<Body>ABC</Body>
 		<City_ID>2</City_ID>
-  </News2>
- </News>
+  </News>
+ </NewsArticle>
  <Photos id="Photos">
-  <Photo1 id="Tree">
+  <Photo id="Tree">
     <PhotoID>1</PhotoID>
     <Photo>null</Photo>
     <PhotoName>Tree</PhotoName>
     <PhotoDescription>Many trees</PhotoDescription>
     <Time>'2025-01-22 10:34:53.44'</Time>
-  </Photo1>
+  </Photo>
  </Photos>
 </XMLRefactoring>
