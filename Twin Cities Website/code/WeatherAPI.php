@@ -32,7 +32,7 @@ function displayCurrentWeather($weather, $city) {
     echo "<h2>Current Weather in $city on " . date('D dS F Y : H:i:s') . "</h2>";
     echo "<p><u>Condition:</u> " . ucfirst($weather->weather['value'] . "</p>");//ucfirst makes the first character of the sentence a capital letter
     echo "<p><u>Temperature:</u> " . $weather->temperature['value'] . "°C</p>";
-    echo "<p><u>Wind:</u> " . $weather->wind->speed['value'] . " m/s (" . $weather->wind->speed['name'] . ") from a " . $weather->wind->direction['name'] . " direction</p>";
+    echo "<p><u>Wind:</u> " . $weather->wind->speed['value'] ." m/s". "</p>";
     echo "<p><u>Humidity:</u> " . $weather->humidity['value'] . "%</p>";
     echo "<p><u>Sunrise:</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";
     echo "<p><u>Sunset:</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";
