@@ -13,7 +13,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     //Fetching and passing the articles using data from the SQL database.
-    $stmt = $pdo->query("SELECT Headline, Link, Body, City_ID, PublishTime FROM News ORDER BY PublishTime DESC LIMIT 10");
+    $stmt = $pdo->query("SELECT Headline, Link, Body, City_ID, PublishTime FROM News ORDER BY PublishTime DESC LIMIT 8");
     $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     //Creating the RSS feed.
