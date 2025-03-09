@@ -47,18 +47,17 @@ VALUES
 CREATE TABLE News (
     NewsID INT PRIMARY KEY AUTO_INCREMENT,
     Headline VARCHAR(200),
-    Publisher VARCHAR(100),
-    Time DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Photo LONGBLOB,
+    Link VARCHAR(100),
     Body TEXT,
     City_ID INT,
+    PublishTime DATETIME,
     FOREIGN KEY (City_ID) REFERENCES City(City_ID) ON DELETE CASCADE
 );
 
-INSERT INTO News (Headline, Publisher, Photo, Body, City_ID)
+INSERT INTO News (Headline, Link, Body, City_ID, PublishTime)
 VALUES 
-('RioNewsTest', 'Arthur 123', NULL, 'ABC', 1),
-('LiverpoolNewsTest', 'Arthur 123', NULL, 'ABC', 2);
+('RioNewsTest', 'www.test.com', "abc", 1, NOW()),
+('LiverpoolNewsTest', 'www.test.com', "abc", 2, NOW());
 
 SELECT * FROM News;
 
