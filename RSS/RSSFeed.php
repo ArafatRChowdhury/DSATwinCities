@@ -19,7 +19,7 @@ try {
 
 // Fetching and passing the articles using data from the SQL database.
 
-$sqlExc - "SELECT Headline, Link, Body, City_ID, PublishTime FROM articles ORDER BY PublishTime DESC LIMIT 10";
+$sqlExc - "SELECT Headline, Link, Body, City_ID, PublishTime FROM News ORDER BY PublishTime DESC LIMIT 10";
 
 $statement = $pdo->query($sqlExc);
 
