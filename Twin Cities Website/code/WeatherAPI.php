@@ -29,22 +29,22 @@ $janeiroforecast = simplexml_load_file($janeiroforecasturl);
 //Function to get weather data and display it in order of what was requested
 function currentweatherinCity($weather, $city) {
     echo "<div style='border:10px solid #ddd; padding: 10px; margin: 10px;'>";
-    echo "<h2><u>Current Weather in $city on " . date('D dS F Y : H:i:s') . "</u></h2>";
+    echo "<h2><u>Current Weather in $city on " . date('D dS F Y : H:i:s') . "</u></h2>";//Displays a header with the name of the city and the time
     echo "<p><u>Condition:</u> " . ucfirst($weather->weather['value'] . "</p>");//ucfirst makes the first character of the sentence a capital letter
-    echo "<p><u>Temperature:</u> " . $weather->temperature['value'] . "°C"."</p>";
-    echo "<p><u>Humidity:</u> " . $weather->humidity['value'] . "%"."</p>";
-    echo "<p><u>Sunrise:</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";
-    echo "<p><u>Sunset:</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";
+    echo "<p><u>Temperature:</u> " . $weather->temperature['value'] . "°C"."</p>"; //Displays the weather in Celcius
+    echo "<p><u>Humidity:</u> " . $weather->humidity['value'] . "%"."</p>";//Displays the humidity
+    echo "<p><u>Sunrise:</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";//Displays the sunrise time
+    echo "<p><u>Sunset:</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";//Displayes the sunset time
     echo "</div>";
 }
 
 // Function to get forecast data and display it 
 function forecastinCity($forecast, $city) {
     echo "<div style='border:10px solid #ddd; padding: 5px; margin: 10px;'>";
-    echo "<h2><u>5-Day Forecast for $city</u></h2>";
+    echo "<h2><u>5-Day Forecast for $city</u></h2>";//Displays a header with the name of the city
  
     $currentDate = null;
-
+    //Loop to only display 5 days of forecast
     foreach ($forecast->forecast->time as $time) {
         $forecastTime = strtotime($time['from']);
         $date = date('Y-m-d', $forecastTime);
@@ -53,7 +53,7 @@ function forecastinCity($forecast, $city) {
             if ($currentDate !== $date) {
                 $currentDate = $date;
 
-                echo "<h3>" . date('D, d M Y', $forecastTime) . "</h3>";
+                echo "<h3>" ."<u>". date('D, d M Y', $forecastTime) ."</u>". "</h3>";//Displays a header with the date for a 5 day forecast
                 echo "<p><u>Condition:</u> " . ucfirst($time->symbol['name'] . "</p>");
                 echo "<p><u>Temperature:</u> " . $time->temperature['value'] . "°C"."</p>";
                 echo "<p><u>Humidity:</u> " . $time->humidity['value'] . "%</p>";
@@ -64,7 +64,7 @@ function forecastinCity($forecast, $city) {
     echo "</div>";
 }
 // Div are made to display the data for current and forecast weather for both cities
-echo "<div style='padding-left:200px;padding-right:400px;'>";
+echo "<div style='padding-left:300px;padding-right:400px;'>";
 echo "<div>";
 currentweatherinCity($liverpoolweather, $liverpool);
 forecastinCity($liverpoolforecast, $liverpool);
