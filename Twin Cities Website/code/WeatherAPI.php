@@ -1,8 +1,8 @@
 <html lan="en">
 
 <title>Liverpool & Rio de Janeiro Weather</title>
-    <body>
-        <h2 id="topheader">Weather Report</h2> 
+    <body style="background-color:lightblue;">
+        <h2 style="padding-left:310px;">Weather Report</h2> 
         <button style="width: 120px; height: 30px; border-radius:12px;">Go back to menu</button>
 <?php
 
@@ -28,10 +28,10 @@ $janeiroforecast = simplexml_load_file($janeiroforecasturl);
 
 //Function to get weather data and display it in order of what was requested
 function currentweatherinCity($weather, $city) {
-    echo "<div style='border:10px solid #ddd; padding: 10px; margin: 10px;'>";
+    echo "<div style='border:10px solid #000000; padding: 10px; margin: 10px;'>";
     echo "<h2><u>Current Weather in $city on " . date('D dS F Y : H:i:s') . "</u></h2>";//Displays a header with the name of the city and the time
     echo "<p><u>Condition:</u> " . ucfirst($weather->weather['value'] . "</p>");//ucfirst makes the first character of the sentence a capital letter
-    echo "<p><u>Temperature:</u> " . $weather->temperature['value'] . "°C"."</p>"; //Displays the weather in Celcius
+    echo "<p><u>Temperature:</u> " . $weather->temperature['value'] . "°C"."</p>"; //Displays the weather in Celsius
     echo "<p><u>Humidity:</u> " . $weather->humidity['value'] . "%"."</p>";//Displays the humidity
     echo "<p><u>Sunrise:</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";//Displays the sunrise time
     echo "<p><u>Sunset:</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";//Displayes the sunset time
@@ -40,12 +40,12 @@ function currentweatherinCity($weather, $city) {
 
 // Function to get forecast data and display it 
 function forecastinCity($forecast, $city) {
-    echo "<div style='border:10px solid #ddd; padding: 5px; margin: 10px;'>";
+    echo "<div style='border:10px solid #000000; padding: 5px; margin: 10px;'>";
     echo "<h2><u>5-Day Forecast for $city</u></h2>";//Displays a header with the name of the city
  
     $currentDate = null;
     //Loop to only display 5 days of forecast
-    foreach ($forecast->forecast->time as $time) {
+    foreach ($forecast->forecast->time as $time) {//Limits the results to only show a time range(Morning, Afternoon) for the 5-day forecast
         $forecastTime = strtotime($time['from']);
         $date = date('Y-m-d', $forecastTime);
         $hour = date('H', $forecastTime);
@@ -54,9 +54,9 @@ function forecastinCity($forecast, $city) {
                 $currentDate = $date;
 
                 echo "<h3>" ."<u>". date('D, d M Y', $forecastTime) ."</u>". "</h3>";//Displays a header with the date for a 5 day forecast
-                echo "<p><u>Condition:</u> " . ucfirst($time->symbol['name'] . "</p>");
-                echo "<p><u>Temperature:</u> " . $time->temperature['value'] . "°C"."</p>";
-                echo "<p><u>Humidity:</u> " . $time->humidity['value'] . "%</p>";
+                echo "<p><u>Condition:</u> " . ucfirst($time->symbol['name'] . "</p>");//Displays the condition of the weather
+                echo "<p><u>Temperature:</u> " . $time->temperature['value'] . "°C"."</p>";//Displays the temperature in Celsius
+                echo "<p><u>Humidity:</u> " . $time->humidity['value'] . "%</p>";//Displays the humidity
                 echo "<br>";
             }
         }
@@ -65,13 +65,13 @@ function forecastinCity($forecast, $city) {
 }
 // Div are made to display the data for current and forecast weather for both cities
 echo "<div style='padding-left:300px;padding-right:400px;'>";
-echo "<div>";
+echo "<div>";//<div> to display the weather data for liverpool and the forecast for liverpool
 currentweatherinCity($liverpoolweather, $liverpool);
 forecastinCity($liverpoolforecast, $liverpool);
 echo "</div>";
 echo "<br>";
 echo "<br>";
-echo "<div>";
+echo "<div>";//<div> to display the weather data for liverpool and the forecast for Rio de Janeiro
 currentweatherinCity($janeiroweather, $janeiro);
 forecastinCity($janeiroforecast, $janeiro);
 echo "</div>";
@@ -82,12 +82,7 @@ echo "</div>";
        font-size:large;
        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    #topheader{
-        padding-left:210px;
-    }
-    body{
-        background-color:lightblue;
-    }
    </style>
  </body>
 </html>
+
