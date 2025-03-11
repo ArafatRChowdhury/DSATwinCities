@@ -2,21 +2,21 @@
 
 <title>Liverpool & Rio de Janeiro Weather</title>
     <body style="background-color:lightblue;">
-    <h2 style="padding-left:310px; padding-top:10px;">Weather Report</h2> 
-    <input type="button" onclick="location.href='main.php'" value="Go back to menu" />
+        <h2 style="padding-left:310px; padding-top:10px;">Weather Report</h2> 
+        <button style="width: 120px; height: 30px; border-radius:12px;">Go back to menu</button>
 <?php
 include "config.php";
-
+$apiKey = "6e626202bf34252643fa2f0e0f005a67";//API key from OpenWeatherMap.org
 //Variables for both cities to add to the URL to search for their weather data 
 $liverpool = "Liverpool";
 $janeiro = "Rio de Janeiro";
 
-//Current weather url for both cities
-$liverpoolweatherurl = "http://api.openweathermap.org/data/2.5/weather?q={$liverpool}&appid={$apiKey}&mode=xml&units=metric";
-$janeiroweatherurl = "http://api.openweathermap.org/data/2.5/weather?q={$janeiro}&appid={$apiKey}&mode=xml&units=metric";
-//5 day forecast url for both cities
-$liverpoolforecasturl = "http://api.openweathermap.org/data/2.5/forecast?q={$liverpool}&appid={$apiKey}&mode=xml&units=metric";
-$janeiroforecasturl = "http://api.openweathermap.org/data/2.5/forecast?q={$janeiro}&appid={$apiKey}&mode=xml&units=metric";
+//URLs to see the current weather and 5 day forecast in Liverpool
+$liverpoolweatherurl = "http://api.openweathermap.org/data/2.5/weather?q={$liverpool}&appid={$apiKey}&mode=xml&units=metric";//Current weather
+$liverpoolforecasturl = "http://api.openweathermap.org/data/2.5/forecast?q={$liverpool}&appid={$apiKey}&mode=xml&units=metric";//5-day forecast
+//URLs to see the current weather and 5 day forecast in Rio de Janeiro
+$janeiroweatherurl = "http://api.openweathermap.org/data/2.5/weather?q={$janeiro}&appid={$apiKey}&mode=xml&units=metric";//Current weather
+$janeiroforecasturl = "http://api.openweathermap.org/data/2.5/forecast?q={$janeiro}&appid={$apiKey}&mode=xml&units=metric";//5-day forecast
 
 //Get current weather data for both cities
 $liverpoolweather = simplexml_load_file($liverpoolweatherurl);
@@ -26,27 +26,24 @@ $janeiroweather = simplexml_load_file($janeiroweatherurl);
 $liverpoolforecast = simplexml_load_file($liverpoolforecasturl);
 $janeiroforecast = simplexml_load_file($janeiroforecasturl);
 
-//Function to get weather data and display it in order of what was requested
+//Function to get weather data and display it
 function currentweatherinCity($weather,$city){
     echo "<div style='border:10px solid #000000; padding:10px; margin:10px;'>";
     echo "<h2><u> Current Weather in $city on ". date('D dS F Y : H:i:s')."</u></h2>";//Displays a header with the name of the city and the time
     echo "<p><u>Temperature :</u> " . $weather->temperature['value'] . "°C"."</p>"; //Displays the weather in Celsius
     echo "<p><u>Condition :</u> " . ucfirst($weather->weather['value'] . "</p>");//ucfirst makes the first character of the sentence a capital letter
-    echo "<p><u>Sunrise :</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) . "</p>";//Displays the sunrise time
-    echo "<p><u>Sunset :</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) . "</p>";//Displayes the sunset time
+    echo "<p><u>Sunrise :</u> " . date('G:i:s', strtotime($weather->city->sun['rise'])) ." am". "</p>";//Displays the sunrise time
+    echo "<p><u>Sunset :</u> " . date('G:i:s', strtotime($weather->city->sun['set'])) ." pm". "</p>";//Displayes the sunset time
     echo "<p><u>Humidity :</u> " . $weather->humidity['value'] . "%"."</p>";//Displays the humidity
 }
 
 // Function to get forecast data and display it 
 function forecastinCity($forecast, $city) {
-    echo "<div style='border:1px solid #000000; padding: 6px; margin: 0px;'>";
+    echo "<div style='border:1px solid #000000; padding: 6px; margin: 20px;'>";
     echo "<h1><u>5-Day Forecast for $city</u></h1>";//Displays a header with the name of the city
- 
-    $currentDate = null;
     //Loop to only display 5 days of forecast
-    foreach ($forecast->forecast->time as $time) {//Limits the results to only show a time range(Morning, Afternoon) for the 5-day forecast
+    foreach ($forecast->forecast->time as $time) {//Limits the results of the forecast to only show a certain time period
         $forecastTime = strtotime($time['from']);
-        $date = date('Y-m-d', $forecastTime);
         $hour = date('H', $forecastTime);
         if ($hour == "12") {
 
@@ -81,3 +78,4 @@ echo "</div>";
    </style>
  </body>
 </html>
+
