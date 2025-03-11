@@ -2,11 +2,11 @@
 
 <title>Liverpool & Rio de Janeiro Weather</title>
     <body style="background-color:lightblue;">
-        <h2 style="padding-left:310px; padding-top:10px;">Weather Report</h2> 
-        <button style="width: 120px; height: 30px; border-radius:12px;">Go back to menu</button>
+    <h2 style="padding-left:310px; padding-top:10px;">Weather Report</h2> 
+    <input type="button" onclick="location.href='main.php'" value="Go back to menu" />
 <?php
+include "config.php";
 
-$apiKey = "6e626202bf34252643fa2f0e0f005a67";//API key from OpenWeatherMap.org
 //Variables for both cities to add to the URL to search for their weather data 
 $liverpool = "Liverpool";
 $janeiro = "Rio de Janeiro";

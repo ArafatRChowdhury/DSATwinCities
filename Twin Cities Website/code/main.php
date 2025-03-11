@@ -1,9 +1,10 @@
 <?php
-include "config.php";
+include "config.php"; #include config.php because it's the configuration file
 ?>
     <!DOCTYPE html>
     <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Twin Cities</title>
         <link rel="stylesheet" href="style.css">
 
@@ -19,10 +20,18 @@ include "config.php";
         <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet/leaflet-maplibre-gl.js"></script>
     </head>
     <body>
+
+    <div class="navbar">
+            <a href="WeatherAPI.php">Weather Forecast</a>
+            <a href="#">Rio de Janeiro</a>
+        </div>
     <div class="grid-container">
         <header class="grid-container">
           <h2><u>Twined Cities:</u> Liverpool and Rio de Janeiro</h2>
         </header>
+
+        
+
         <div class="city">
         <h3>Liverpool</h3>
         <p>Information about Liverpool</p>
@@ -55,15 +64,16 @@ include "config.php";
 
             //array containing liverpool's places of interest
             var liverpoolMarkers = [
-                {lat: 53.23699, lng: -3.04574, name: "Wheel of Liverpool"},
-                {lat: 53.41572, lng: -3.29094, name: "Liverpool Mountain"},
-                {lat: 53.36087, lng: -3.25074, name: "Pride of Liverpool"},
-                {lat: 53.50072, lng: -3.26722, name: "De Wadden"},
-                {lat: 53.43543, lng: -3.18072, name: "Maritime Museum"},
-                {lat: 53.37807, lng: -2.74551, name: "Maldron Hotel"}
+                {lat: 53.23699, lng: -3.04574, name: "Wheel of Liverpool", path: "places/wheelofliverpool.php"},
+                {lat: 53.41572, lng: -3.29094, name: "Liverpool Mountain", path: "places/liverpoolmountain.php"},
+                {lat: 53.36087, lng: -3.25074, name: "Pride of Liverpool", path: "places/prideofliverpool.php"},
+                {lat: 53.50072, lng: -3.26722, name: "De Wadden", path: "places/dewadden.php"},
+                {lat: 53.43543, lng: -3.18072, name: "Maritime Museum", path: "places/maritimemuseum.php"},
+                {lat: 53.37807, lng: -2.74551, name: "Maldron Hotel", path: "places/maldronhotel.php"}
             ];
 
             var places = <?php echo json_encode($places); ?>
+            //create a variable with the json encoded $places
 
             //loop through the array and add a marker for each place of interest
             //add mouse hover functionality that shows the places' names
@@ -88,6 +98,10 @@ include "config.php";
 
                 liverpoolMarkersMap.on("mouseout", function() {
                     liverpoolMarkersMap.closePopup();
+                })
+
+                liverpoolMarkersMap.on("click", function() {
+                    window.location.href = marker.path;
                 })
             });
 
@@ -121,12 +135,12 @@ include "config.php";
 
             // array of dictionaries that contains co ordinates for rio's places of interest
             var rioDeJaneiroMarkers = [
-                {lat: -22.95350, lng: -43.21112, name: "Christ the Redeemer"},
-                {lat: -22.97200, lng: -43.18083, name: "Copacabana Beach"},
-                {lat: -22.96267, lng: -43.21215, name: "Parque Lage"},
-                {lat: -22.94948, lng: -43.18332, name: "Botafogo Praia Shopping"},
-                {lat: -22.95650, lng: -43.17800, name: "Museu Botafogo FR"},
-                {lat: -22.95050, lng: -43.15415, name: "Sugarloaf Mountain"},
+                {lat: -22.95350, lng: -43.21112, name: "Christ the Redeemer", path: "places/christtheredeemer.php"},
+                {lat: -22.97200, lng: -43.18083, name: "Copacabana Beach", path: "places/copacabanabeach.php"},
+                {lat: -22.96267, lng: -43.21215, name: "Parque Lage", path: "places/parquelage.php"},
+                {lat: -22.94948, lng: -43.18332, name: "Botafogo Praia Shopping", path: "places/botafogopraiashoppingcentre.php"},
+                {lat: -22.95650, lng: -43.17800, name: "Museu Botafogo FR", path: "places/museubotafogo.php"},
+                {lat: -22.95050, lng: -43.15415, name: "Sugarloaf Mountain", path: "places/sugarloafmountain.php"},
             ]
 
             console.log(places.rio);
@@ -154,6 +168,10 @@ include "config.php";
                 rioMarkersMap.on("mouseout", function() {
                     rioMarkersMap.closePopup();
                 })
+
+                rioMarkersMap.on("click", function() {
+                    window.location.href = marker.path;
+                })
             });
 
 
@@ -177,10 +195,6 @@ include "config.php";
         </script>
         <div class="footer">
             <p>Add any links related to the content here</p>
-        </div>
-        <div class="navbar">
-            <a>Liverpool</a>
-            <a >Rio de Janeiro</a>
         </div>
     </div>
       </body>

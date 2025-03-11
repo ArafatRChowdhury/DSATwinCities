@@ -3,6 +3,8 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $database = "twin_cities_assessment";
+$apiKey = "6e626202bf34252643fa2f0e0f005a67";
+
 
 #create a mysqli object that is connected to the database
 $conn = new mysqli($servername, $username, $password, $database);
@@ -47,9 +49,10 @@ if ($rioResult->num_rows > 0) {
     echo "0 results";
 }
 
+
+#create a parent array for the other arrays so they can both be encoded into JSON
 $places = [
     "liverpool" => $liverpoolPlaces,
     "rio" => $rioPlaces
 ];
-$conn->close();
 ?>
