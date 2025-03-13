@@ -5,7 +5,7 @@
         <h2 style="padding-left:310px; padding-top:10px;">Weather Report</h2> 
         <button style="width: 120px; height: 30px; border-radius:12px;">Go back to menu</button>
 <?php
-include "config.php";
+
 $apiKey = "6e626202bf34252643fa2f0e0f005a67";//API key from OpenWeatherMap.org
 //Variables for both cities to add to the URL to search for their weather data 
 $liverpool = "Liverpool";
@@ -18,15 +18,13 @@ $liverpoolforecasturl = "http://api.openweathermap.org/data/2.5/forecast?q={$liv
 $janeiroweatherurl = "http://api.openweathermap.org/data/2.5/weather?q={$janeiro}&appid={$apiKey}&mode=xml&units=metric";//Current weather
 $janeiroforecasturl = "http://api.openweathermap.org/data/2.5/forecast?q={$janeiro}&appid={$apiKey}&mode=xml&units=metric";//5-day forecast
 
-//Get current weather data for both cities
+//Get the current weather and forecast data for Liverpool
 $liverpoolweather = simplexml_load_file($liverpoolweatherurl);
-$janeiroweather = simplexml_load_file($janeiroweatherurl);
-
-//Get forecast data for both cities
 $liverpoolforecast = simplexml_load_file($liverpoolforecasturl);
+//Get the current weather and forecast data for Rio de Janeiro
+$janeiroweather = simplexml_load_file($janeiroweatherurl);
 $janeiroforecast = simplexml_load_file($janeiroforecasturl);
-
-//Function to get weather data and display it
+//Function to get the current weather in Liverpool and Rio de Janeiro
 function currentweatherinCity($weather,$city){
     echo "<div style='border:10px solid #000000; padding:10px; margin:10px;'>";
     echo "<h2><u> Current Weather in $city on ". date('D dS F Y : H:i:s')."</u></h2>";//Displays a header with the name of the city and the time
@@ -37,7 +35,7 @@ function currentweatherinCity($weather,$city){
     echo "<p><u>Humidity :</u> " . $weather->humidity['value'] . "%"."</p>";//Displays the humidity
 }
 
-// Function to get forecast data and display it 
+// Function to get the 5-day forecast weather in Liverpool and Rio de Janeiro
 function forecastinCity($forecast, $city) {
     echo "<div style='border:1px solid #000000; padding: 6px; margin: 20px;'>";
     echo "<h1><u>5-Day Forecast for $city</u></h1>";//Displays a header with the name of the city
@@ -78,4 +76,5 @@ echo "</div>";
    </style>
  </body>
 </html>
+
 
