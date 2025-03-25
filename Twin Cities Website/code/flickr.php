@@ -13,6 +13,7 @@ $pass = '';
 #Connecting to the MYSQL Database via PDO.
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 
+#Fetch and return Flickr image ID associated with a placename - taken from the database.
 $placeName = "Maritime Museum";
 $stmt = $pdo->prepare("SELECT FID FROM FlickrPhotos WHERE PlaceName = :placeName");
 $stmt->bindParam(':placeName', $placeName, PDO::PARAM_STR);
