@@ -24,13 +24,7 @@ $photoId = $result['FID'];
 #Configuration for Flickr.
 $apiKey = '5dd85487782352db78c622af784de942';
 
-
-
-
-
 $apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=$apiKey&photo_id=$photoId&format=json&nojsoncallback=1";
-
-
 
 #Fetching image data from Flickr in JSON and converting the response to array. This can then be used to extract the largest final image.
 $response = file_get_contents($apiUrl);
