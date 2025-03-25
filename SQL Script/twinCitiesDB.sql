@@ -77,3 +77,22 @@ CREATE TABLE PhotoSet (
     FOREIGN KEY (PhotoID) REFERENCES Photos(PhotoID) ON DELETE CASCADE
 );
 
+CREATE TABLE FlickrPhotos (
+    PlaceName VARCHAR(100),
+    FID VARCHAR(100)
+);
+
+INSERT INTO FlickrPhotos (PlaceName, FID) 
+VALUES
+('Wheel of Liverpool', '24199492091'),
+('Liverpool Mountain', '50261491988'),
+('Pride of Liverpool', '52744858299'),
+('De Wadden', '53584199437'),
+('Maritime Museum', '51883661520'),
+('Maldron Hotel', '53470073611'),
+('Christ the Redeemer', '52765305395'),
+('Copacabana Beach', '28494952475'),
+('Parque Lage', '31512372274'),
+('Botafogo Praia Shopping', '1429627530'),
+('Museu Botafogo FR', '35249766051'),
+('Sugarloaf Mountain', '31034170245');
