@@ -50,7 +50,11 @@ if ($result->num_rows > 0) {
         <h1><?php echo $info['NameofLocation']?> - A Hidden Gem in Rio de Janeiro</h1>
         
         <!-- Image of the park -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Parque_Lage.jpg" alt="Parque Lage in Rio de Janeiro">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         
         <!-- Description of the park -->
         <p><?php echo $info['Place_Description']?></p>

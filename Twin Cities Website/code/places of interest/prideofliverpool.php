@@ -71,7 +71,11 @@ if ($result->num_rows > 0) {
     <!-- Main Content -->
     <main>
         <!-- Image of Liverpool -->
-        <img src="https://upload.wikimedia.org/wikipedia/"></img>
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
 
         <p><?php echo $info['Place_Description']?></p>
 

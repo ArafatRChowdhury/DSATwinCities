@@ -56,7 +56,11 @@ if ($result->num_rows > 0) {
         <p>Copacabana Beach is one of the most famous beaches in the world, located in Rio de Janeiro, Brazil. Stretching over 4 kilometers, it is known for its golden sands, vibrant atmosphere, and iconic black-and-white wave-patterned promenade.</p>
         
         <!-- Image of Copacabana Beach -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Copacabana_Beach%2C_Rio_de_Janeiro.jpg" alt="Copacabana Beach in Rio de Janeiro">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
 
         <h2>Location:</h2>
         <p>Street Name: <?php echo $info['StreetName'] ?></p>

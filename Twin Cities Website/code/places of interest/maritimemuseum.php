@@ -74,6 +74,12 @@ if ($result->num_rows > 0) {
     
     <!-- Main content container -->
     <div class="container">
+
+    <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         <section id="about">
             <h2>About the Museum</h2>
             <p><?php echo $info['Place_Description']?></p>

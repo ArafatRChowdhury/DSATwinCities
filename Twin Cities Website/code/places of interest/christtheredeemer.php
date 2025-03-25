@@ -53,7 +53,11 @@ if ($result->num_rows > 0) {
     <!-- Main Content Container -->
     <div class="container">
         <!-- Image of Christ the Redeemer -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Christ_the_Redeemer_-_Cristo_Redentor.jpg/800px-Christ_the_Redeemer_-_Cristo_Redentor.jpg" alt="Christ the Redeemer">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         
         <!-- Description Section -->
         <h2>About the Statue</h2>

@@ -74,7 +74,11 @@ if ($result->num_rows > 0) {
 
         <h2>Gallery</h2>
         <!-- Placeholder image for the pub -->
-        <img src="de_wadden.jpg" alt="De Wadden Pub in Liverpool" width="100%">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
     </div>
 
 </body>

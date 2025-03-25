@@ -43,7 +43,11 @@ if ($result->num_rows > 0) {
         <!-- Page title -->
         <h1><?php echo $info['NameofLocation']?></h1>
         <!-- Image of Sugarloaf Mountain -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/Sugarloaf_Mountain_in_Rio_de_Janeiro_4.jpg" alt="Sugarloaf Mountain">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         <!-- Description section -->
         <p><?php echo $info['Place_Description']?></p>
         <!-- Cable car information -->

@@ -74,7 +74,11 @@ if ($result->num_rows > 0) {
     <main>
         <!-- Mountain Image Section -->
         <!-- Image of the mountain (you can replace this with a valid image link) -->
-        <img src="https://via.placeholder.com/1200x500?text=Liverpool+Mountain" alt="Liverpool Mountain" class="mountain-image">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
 
         <!-- Description Section -->
         <div class="description">

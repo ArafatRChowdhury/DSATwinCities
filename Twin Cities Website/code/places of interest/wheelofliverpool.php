@@ -52,7 +52,11 @@ if ($result->num_rows > 0) {
 <body>
     <div class="container">
         <h1><?php echo $info['NameofLocation']?></h1>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Liverpool_Wheel_at_Night.jpg" alt="Wheel of Liverpool">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         <p><?php echo $info['Place_Description']?></p>
         <h2>Location</h2>
         <p>Street Name: <?php echo $info['StreetName'] ?></p>

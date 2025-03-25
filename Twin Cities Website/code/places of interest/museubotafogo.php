@@ -37,6 +37,12 @@ if ($result->num_rows > 0) {
 </head>
 <body>
     <div class="container">
+
+    <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         <!-- Header Section -->
         <h1><?php echo $info['NameofLocation'] ?></h1>
         <p><?php echo $info['Place_Description']?></p>

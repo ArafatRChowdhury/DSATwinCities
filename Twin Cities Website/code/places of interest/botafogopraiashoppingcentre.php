@@ -51,7 +51,11 @@ if ($result->num_rows > 0) {
         <p><?php echo $info['Place_Description'] ?></p>
         
         <!-- Image of the Shopping Centre -->
-        <img src="botafogo-shopping.jpg" alt="Botafogo Praia Shopping" class="image">
+        <?php
+        include "../flickr.php"; 
+        $placeName = $info['NameofLocation'];
+        echo "<img style=\"width: 30%;\" src=\"$imageUrl\" alt=\"Flickr Image\">"
+        ?>
         
         <!-- Features Section -->
         <h2>What You Can Find Here</h2>

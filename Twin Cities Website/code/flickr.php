@@ -13,8 +13,7 @@ $pass = '';
 #Connecting to the MYSQL Database via PDO.
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 
-#Fetch and return Flickr image ID associated with a placename - taken from the database.
-$placeName = "Maritime Museum";
+$placeName = $info['NameofLocation'];
 $stmt = $pdo->prepare("SELECT FID FROM FlickrPhotos WHERE PlaceName = :placeName");
 $stmt->bindParam(':placeName', $placeName, PDO::PARAM_STR);
 $stmt->execute();
@@ -26,9 +25,9 @@ $apiKey = '5dd85487782352db78c622af784de942';
 
 $apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key=$apiKey&photo_id=$photoId&format=json&nojsoncallback=1";
 
-#Fetching image data from Flickr in JSON and converting the response to array. This can then be used to extract the largest final image.
+#Fetching image data from Flickr and converting the response to array. This can then be used to extract the largest final image.
 $response = file_get_contents($apiUrl);
-$data = json_decode($response, true); #Convert into an array.
+$data = json_decode($response, true);
 
 
 if ($data && isset($data['sizes']['size'])) { #Check data is not null.
@@ -40,7 +39,7 @@ if ($data && isset($data['sizes']['size'])) { #Check data is not null.
     $imageUrl = $largestSize['source'];
 
     #Display the image.
-    echo "<img src=\"$imageUrl\" alt=\"Flickr Image\">";
+    #echo "<img src=\"$imageUrl\" alt=\"Flickr Image\">";
 } else {
     echo "Error fetching image";
 }
