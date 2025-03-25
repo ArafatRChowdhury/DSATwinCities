@@ -9,7 +9,6 @@ $pass = '';
 
 //Connecting to the MYSQL Database via PDO.
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 //Fetching and passing the articles using data from the SQL database.
 $stmt = $pdo->query("SELECT Headline, Link, Body, City_ID, PublishTime FROM News ORDER BY PublishTime DESC LIMIT 8");
