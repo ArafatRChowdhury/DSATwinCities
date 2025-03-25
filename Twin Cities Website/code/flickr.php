@@ -32,9 +32,9 @@ $apiUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&a
 
 
 
-#Fetching image data from Flickr and converting the response to array. This can then be used to extract the largest final image.
+#Fetching image data from Flickr in JSON and converting the response to array. This can then be used to extract the largest final image.
 $response = file_get_contents($apiUrl);
-$data = json_decode($response, true);
+$data = json_decode($response, true); #Convert into an array.
 
 
 if ($data && isset($data['sizes']['size'])) { #Check data is not null.
