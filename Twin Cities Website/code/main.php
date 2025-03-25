@@ -24,6 +24,7 @@ include "config.php"; #include config.php because it's the configuration file
     <div class="navbar">
             <a href="WeatherAPI.php">Weather Forecast</a>
             <a href="#">Rio de Janeiro</a>
+            <a href="RSSFeed.php">RSS</a>
         </div>
     <div class="grid-container">
         <header class="grid-container">
