@@ -1,5 +1,7 @@
 <?php
-//Configuration for the database.
+#Component 4 - Generates an RSS Feed from the news articles held in the database.
+
+#Configuration for the database.
 @date_default_timezone_set("GMT");
 
 $host = 'localhost';
@@ -7,14 +9,14 @@ $dbname = 'Twin_Cities_Assessment';
 $user = 'root';
 $pass = '';
 
-//Connecting to the MYSQL Database via PDO.
+#Connecting to the MYSQL Database via PDO.
 $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
 
-//Fetching and passing the articles using data from the SQL database.
+#Fetching and passing the articles using data from the SQL database.
 $stmt = $pdo->query("SELECT Headline, Link, Body, City_ID, PublishTime FROM News ORDER BY PublishTime DESC LIMIT 8");
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//Creating the RSS feed.
+#Creating the RSS feed.
 
 header("Content-Type: application/rss+xml; charset=UTF-8");
 
